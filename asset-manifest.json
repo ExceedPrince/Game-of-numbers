@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/game-of-numbers/static/css/main.cbab881a.css",
+    "main.js": "/game-of-numbers/static/js/main.870e912b.js",
+    "index.html": "/game-of-numbers/index.html",
+    "main.cbab881a.css.map": "/game-of-numbers/static/css/main.cbab881a.css.map",
+    "main.870e912b.js.map": "/game-of-numbers/static/js/main.870e912b.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.cbab881a.css",
+    "static/js/main.870e912b.js"
+  ]
+}
