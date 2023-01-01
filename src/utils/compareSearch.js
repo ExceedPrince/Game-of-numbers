@@ -32,7 +32,7 @@ export const compareSearch = (sortedArray, mainArray, setChosenArr, setMainArr, 
 	}
 
 	//vertical search
-	for (let o = sortedArray[0].orderIndex + 9; o <= sortedArray[1].orderIndex; o += 9) {
+	for (let o = sortedArray[0].orderIndex + 10; o <= sortedArray[1].orderIndex; o += 10) {
 		if (tempArr[o].isActive === true) {
 			if (tempArr[o].id === sortedArray[1].id) {
 				sortedArray[0].isActive = false;
@@ -61,8 +61,8 @@ export const compareSearch = (sortedArray, mainArray, setChosenArr, setMainArr, 
 	}
 
 	//search - left-down
-	for (let u = sortedArray[0].orderIndex + 8; u <= sortedArray[1].orderIndex; u += 8) {
-		if (tempArr[u].isActive === false && (tempArr[u].orderIndex + 1) % 9 === 0) {
+	for (let u = sortedArray[0].orderIndex + 9; u <= sortedArray[1].orderIndex; u += 9) {
+		if (tempArr[u].isActive === false && tempArr[u].orderIndex % 10 === 0) {
 			setTimeout(() => {
 				sortedArray.forEach(element => {
 					document.querySelector(`#${element.id}`).classList.remove("selected");
@@ -72,7 +72,7 @@ export const compareSearch = (sortedArray, mainArray, setChosenArr, setMainArr, 
 			break;
 		}
 		if (tempArr[u].isActive === true) {
-			if (tempArr[u].id === sortedArray[1].id && sortedArray[0].orderIndex % 9 !== 0) {
+			if (tempArr[u].id === sortedArray[1].id && sortedArray[0].orderIndex % 10 !== 0) {
 				sortedArray[0].isActive = false;
 				sortedArray[1].isActive = false;
 				tempArr.forEach(element => {
@@ -100,8 +100,8 @@ export const compareSearch = (sortedArray, mainArray, setChosenArr, setMainArr, 
 	}
 
 	//search - right-down
-	for (let a = sortedArray[0].orderIndex + 10; a <= sortedArray[1].orderIndex; a += 10) {
-		if (tempArr[a].isActive === false && tempArr[a].orderIndex % 9 === 0) {
+	for (let a = sortedArray[0].orderIndex + 11; a <= sortedArray[1].orderIndex; a += 11) {
+		if (tempArr[a].isActive === false && (tempArr[a].orderIndex + 1) % 10 === 0) {
 			setTimeout(() => {
 				sortedArray.forEach(element => {
 					document.querySelector(`#${element.id}`).classList.remove("selected");
@@ -111,7 +111,7 @@ export const compareSearch = (sortedArray, mainArray, setChosenArr, setMainArr, 
 			break;
 		}
 		if (tempArr[a].isActive === true) {
-			if (tempArr[a].id === sortedArray[1].id && (sortedArray[0].orderIndex + 1) % 9 !== 0) {
+			if (tempArr[a].id === sortedArray[1].id && (sortedArray[0].orderIndex + 1) % 10 !== 0) {
 				sortedArray[0].isActive = false;
 				sortedArray[1].isActive = false;
 				tempArr.forEach(element => {

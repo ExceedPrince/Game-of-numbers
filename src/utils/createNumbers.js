@@ -2,7 +2,7 @@ import { v4 as uuidv4 } from 'uuid';
 import { generateRandomLetter } from './generateRandomLetter';
 
 export const createNumbers = () => {
-	const gridNum = 27;
+	const gridNum = 30;
 	const array = [];
 
 	for (let index = 0; index < gridNum; index++) {

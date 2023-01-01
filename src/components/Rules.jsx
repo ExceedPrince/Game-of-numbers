@@ -11,7 +11,6 @@ const Rules = () => {
 		dots: true,
 		infinite: true,
 		speed: 500,
-		lazyLoad: 'ondemand',
 		slidesToShow: 1,
 		slidesToScroll: 1
 	};

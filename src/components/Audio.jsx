@@ -1,11 +1,16 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useLayoutEffect } from 'react';
 
 import { TbPlayerTrackPrev, TbPlayerTrackNext } from "react-icons/tb";
 import { CgPlayButtonO, CgPlayStopO } from "react-icons/cg";
+import { BsMusicNoteList } from "react-icons/bs";
+import { MdMusicOff } from "react-icons/md";
 
 const Audio = (props) => {
 	const [music, setMusic] = useState(null);
 	const [play, setPlay] = useState(true);
+	const [size, setSize] = useState([window.innerWidth, window.innerHeight]);
+	const [isMobile, setIsMobile] = useState(navigator.userAgent.toLowerCase().indexOf("mobile") > -1 || window.innerWidth < 768);
+	const [musicOpen, setMusicOpen] = useState(false);
 
 	useEffect(() => {
 		setMusic(props.src);
@@ -31,9 +36,12 @@ const Audio = (props) => {
 	}, [play, music])
 
 	useEffect(() => {
-		console.log(music);
-		console.log(play);
-	}, [music, play])
+		if (navigator.userAgent.toLowerCase().indexOf("mobile") > -1 || window.innerWidth < 768) {
+			setIsMobile(true);
+		} else {
+			setIsMobile(false);
+		}
+	}, [size])
 
 	const nextSong = () => {
 		if (music < 6) {
@@ -55,12 +63,27 @@ const Audio = (props) => {
 		}
 	}
 
+	(function useWindowSize() {
+		useLayoutEffect(() => {
+			function updateSize() {
+				setSize([window.innerWidth, window.innerHeight]);
+			}
+			window.addEventListener('resize', updateSize);
+			updateSize();
+			return () => window.removeEventListener('resize', updateSize);
+		}, []);
+	})();
+
 	return (
-		<div id="musicContainer">
+		<div id="musicContainer" className={`${isMobile ? "mobile" : ""} ${musicOpen ? "open" : ""}`}>
 			<audio type="audio/mp3" id="bg-music" src={`../../songs/song_0${music}.mp3`} onEnded={() => nextSong()} />
 			<div id="prev" className="audioBtns" onClick={() => changeMusic("prev")}><TbPlayerTrackPrev /></div>
 			<div id="audioBtn" className="audioBtns" onClick={() => setPlay(!play)}>{play ? <CgPlayStopO /> : <CgPlayButtonO />}</div>
 			<div id="next" className="audioBtns" onClick={() => changeMusic("next")}><TbPlayerTrackNext /></div>
+			{isMobile ? (
+				<div id="audioCallBtn" className={musicOpen ? "open" : ""} onClick={() => setMusicOpen(!musicOpen)}>{!musicOpen ? <BsMusicNoteList /> : <MdMusicOff />}</div>
+			)
+				: null}
 		</div>
 	);
 }

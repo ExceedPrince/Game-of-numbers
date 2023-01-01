@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useLayoutEffect } from 'react';
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import Zoom from 'react-reveal/Zoom';
 import { v4 as uuidv4 } from 'uuid';
@@ -26,6 +26,8 @@ const App = () => {
   const [bestScore, setBestScore] = useState({ user: "", point: 0 });
   const [submitted, setSubmitted] = useState(false);
   const [isFinished, setisFinished] = useState(false);
+  const [size, setSize] = useState([window.innerWidth, window.innerHeight]);
+  const [mobileWork, setMobileWork] = useState(null);
 
   const location = useLocation();
   const navigate = useNavigate();
@@ -50,10 +52,30 @@ const App = () => {
     if (document.cookie.indexOf("TableGameCookie=true") === -1 || !location.state || (location.state && !location.state.navigated)) {
       return navigate("/");
     }
+
+    if (navigator.userAgent.toLowerCase().indexOf("mobile") > -1) {
+      if (size[0] < 768) {
+        setMobileWork("false");
+      }
+
+      if (size[0] >= 768 || size[0] > size[1]) {
+        setMobileWork("true");
+      }
+
+    } else {
+      if (size[0] < 768) {
+        setMobileWork("uncertain");
+      }
+    }
   }, [])
 
   useEffect(() => {
     if (mainArr) {
+
+      if (mainArr.length > 50) {
+        document.querySelector("body .app").classList.add("extended");
+      }
+
       const checkArr = mainArr.filter(obj => obj.isActive === true);
 
       if (checkArr.length === 0) {
@@ -110,6 +132,42 @@ const App = () => {
     }
   }, [chosenArr])
 
+  useEffect(() => {
+    if (mobileWork === "false") {
+      if (size[0] >= 768 || size[0] > size[1]) {
+        setMobileWork("true");
+      }
+    } else if (mobileWork !== "false") {
+      if (size[0] < 768) {
+        if (navigator.userAgent.toLowerCase().indexOf("mobile") > -1) {
+          if (size[0] > size[1]) {
+            setMobileWork("true");
+          } else {
+            setMobileWork("false");
+          }
+        } else {
+          setMobileWork("uncertain");
+        }
+      } else {
+        setMobileWork(null);
+      }
+    }
+  }, [size])
+
+  useEffect(() => {
+    const audioCallBtn = document.querySelector("#audioCallBtn");
+
+    if (audioCallBtn) {
+      if ((mobileWork && mobileWork === "false") || (mobileWork && mobileWork === "uncertain")) {
+        audioCallBtn.classList.add("d-none");
+      }
+
+      if ((mobileWork && mobileWork === "true") || !mobileWork) {
+        audioCallBtn.classList.remove("d-none");
+      }
+    }
+  }, [mobileWork])
+
   const addToGrid = (state) => {
     let index = -1;
     const filteredArr = state.map((item) => {
@@ -129,6 +187,8 @@ const App = () => {
   }
 
   const resetGrid = () => {
+    document.querySelector("body .app").classList.remove("extended");
+
     const leftSelected = document.querySelector(".selected");
     if (leftSelected) {
       leftSelected.classList.remove("selected");
@@ -136,6 +196,10 @@ const App = () => {
     setChosenArr([]);
     setScore(0);
     setMainArr(createNumbers());
+
+    if (mobileWork === "true") {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
   }
 
   const choseGrid = (itemId, itemValue, targetId, targetValue) => {
@@ -185,46 +249,88 @@ const App = () => {
     setMainArr(createNumbers());
   }
 
+  (function useWindowSize() {
+    useLayoutEffect(() => {
+      function updateSize() {
+        setSize([window.innerWidth, window.innerHeight]);
+      }
+      window.addEventListener('resize', updateSize);
+      updateSize();
+      return () => window.removeEventListener('resize', updateSize);
+    }, []);
+  })();
+
   return (
-    <div className="app">
-      <Link to={"/"} className="linkBack"><MdArrowBack className='svgIcons' /> Go back</Link>
-      <div id="mainContainer">
-        <div id="scoreContainer">
-          <span className="scoreSpan">Your score: {score}</span>
-          <span className="scoreSpan">Best score: {bestScore.point > 0 ? `${bestScore.user} (${bestScore.point})` : "-"}</span>
+    <div className={`app ${mobileWork === "true" ? "mobile" : ""}`}>
+      {mobileWork && mobileWork === "false" ? (
+        <div id="mobilePopUp">
+          <div className="mobilePopUp-inner">
+            <h1>Please, rotate your screen for better user experience!</h1>
+            <img src='../../img/rotate_screen.gif' alt="rotate screen" />
+          </div>
         </div>
-        <Zoom cascade duration={1000}>
-          <div id="gridTable" className={`${isFinished ? "finished" : ""}`}>
-            {mainArr &&
-              mainArr.map((item, index) => (
-                <div key={index} id={item.id} data-order={item.orderIndex} className={`gridCell ${item.isActive === true ? "" : "disabled"}`} onClick={(e) => choseGrid(item.id, item.value, e.target.id, e.target.innerText)}>{item.value}</div>
-              ))
+      ) : mobileWork && mobileWork === "uncertain" ? (
+        <div id="mobilePopUp">
+          <div className="mobilePopUp-inner">
+            <h1>What kind of device are you using currently?</h1>
+            <div className="mobilePopUp-twoCol">
+              <div className="mobilePopUp-col">
+                <h2>Computer/<br />Notebook</h2>
+                <p>Please, zoom out (CTRL/⌘ and -) for better user experience!</p>
+                <img className='pic' src='../../img/zoom-out.png' alt="rotate screen" />
+              </div>
+              <div className="mobilePopUp-col">
+                <h2>Tablet/<br />iPad</h2>
+                <p>Please, rotate your screen for better user experience!</p>
+                <img src='../../img/rotate_screen.gif' alt="rotate screen" />
+              </div>
+            </div>
+          </div>
+        </div>
+      ) : null
+      }
+      {mobileWork !== "uncertain" && mobileWork !== "false" ? (
+        <Link to={"/"} className="linkBack"><MdArrowBack className='svgIcons' /> Go back</Link>
+      ) : null}
+      {mobileWork !== "uncertain" && mobileWork !== "false" ? (
+        <div id="mainContainer">
+          <div id="scoreContainer">
+            <span className="scoreSpan">Your score: {score}</span>
+            <span className="scoreSpan">Best score: {bestScore.point > 0 ? `${bestScore.user} (${bestScore.point})` : "-"}</span>
+          </div>
+          <Zoom cascade duration={1000}>
+            <div id="gridTable" className={`${isFinished ? "finished" : ""}`}>
+              {mainArr &&
+                mainArr.map((item, index) => (
+                  <div key={index} id={item.id} data-order={item.orderIndex} className={`gridCell ${item.isActive === true ? "" : "disabled"}`} onClick={(e) => choseGrid(item.id, item.value, e.target.id, e.target.innerText)}>{item.value}</div>
+                ))
+              }
+            </div>
+          </Zoom>
+          <div id="buttonContainer">
+            {isFinished ?
+              <div id="finishContainer">
+                {!submitted && (bestScore.point === 0 || score <= bestScore.point) ?
+                  <form onSubmit={(e) => onSubmit(e, playerName)}>
+                    <input type="text" id="nameInput" placeholder='*Your name*' minLength={2} value={playerName} onChange={(e) => setPlayerName(e.target.value)} />
+                    <button type="submit" id="submitBtn"><GoChecklist className='svgIcons' /> Submit</button>
+                  </form>
+                  :
+                  null
+                }
+                <button type="button" className="actionBtn" id="newGameBtn" onClick={() => startNewGame()}><TiTick className='svgIcons' /> New Game</button>
+              </div>
+              :
+              <>
+                <button type="button" className="actionBtn" id="newNumBtn" onClick={() => addToGrid(mainArr)}><AiOutlineAppstoreAdd className='svgIcons' /> Add Numbers</button>
+                <button type="button" className="actionBtn" id="resetBtn" onClick={() => resetGrid()}><RxReset className='svgIcons' /> New Game</button>
+                <button type="button" className="actionBtn" id="hintBtn" onClick={() => giveHint(mainArr, setAlert, setisFinished, setScore)}><TbZoomQuestion className='svgIcons' /> Hint</button>
+                <button type="button" className="actionBtn" id="saveBtn" onClick={() => saveGame(mainArr)}><RiSave3Fill className='svgIcons' /> Save</button>
+              </>
             }
           </div>
-        </Zoom>
-        <div id="buttonContainer">
-          {isFinished ?
-            <div id="finishContainer">
-              {!submitted && (bestScore.point === 0 || score <= bestScore.point) ?
-                <form onSubmit={(e) => onSubmit(e, playerName)}>
-                  <input type="text" id="nameInput" placeholder='*Your name*' minLength={2} value={playerName} onChange={(e) => setPlayerName(e.target.value)} />
-                  <button type="submit" id="submitBtn"><GoChecklist className='svgIcons' /> Submit</button>
-                </form>
-                :
-                null
-              }
-              <button type="button" className="actionBtn" id="newGameBtn" onClick={() => startNewGame()}><TiTick className='svgIcons' /> New Game</button>
-            </div>
-            :
-            <>
-              <button type="button" className="actionBtn" id="newNumBtn" onClick={() => addToGrid(mainArr)}><AiOutlineAppstoreAdd className='svgIcons' /> Add Numbers</button>
-              <button type="button" className="actionBtn" id="resetBtn" onClick={() => resetGrid()}><RxReset className='svgIcons' /> New Game</button>
-              <button type="button" className="actionBtn" id="hintBtn" onClick={() => giveHint(mainArr, setAlert, setisFinished, setScore)}><TbZoomQuestion className='svgIcons' /> Hint</button>
-              <button type="button" className="actionBtn" id="saveBtn" onClick={() => saveGame(mainArr)}><RiSave3Fill className='svgIcons' /> Save</button>
-            </>
-          }
         </div>
-      </div>
+      ) : null}
       {
         alert.message.length > 0 &&
         <Alert message={alert.message} type={alert.type} />

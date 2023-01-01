@@ -19,7 +19,7 @@ export const giveHint = (mainArray, setAlert, setisFinished, setScore) => {
 			}
 
 			//search vertically
-			for (let index = element.orderIndex + 9; index < hintArr.length; index += 9) {
+			for (let index = element.orderIndex + 10; index < hintArr.length; index += 10) {
 				if (hintArr[index].isActive === true) {
 					if (element.value === hintArr[index].value || element.value + hintArr[index].value === 10) {
 						const miniArr = [element, hintArr[index]]
@@ -33,12 +33,12 @@ export const giveHint = (mainArray, setAlert, setisFinished, setScore) => {
 			}
 
 			//search diagonally down-left
-			for (let index = element.orderIndex + 8; index < hintArr.length; index += 8) {
-				if (hintArr[index].isActive === false && (hintArr[index].orderIndex + 1) % 9 === 0) {
+			for (let index = element.orderIndex + 9; index < hintArr.length; index += 9) {
+				if (hintArr[index].isActive === false && hintArr[index].orderIndex % 10 === 0) {
 					break;
 				}
 				if (hintArr[index].isActive === true) {
-					if (index % 8 !== 0 && element.orderIndex % 9 !== 0 && (hintArr[index].orderIndex + 1) % 9 !== 0 && (element.value === hintArr[index].value || element.value + hintArr[index].value === 10)) {
+					if (index % 9 !== 0 && element.orderIndex % 10 !== 0 && hintArr[index].orderIndex % 10 !== 0 && (element.value === hintArr[index].value || element.value + hintArr[index].value === 10)) {
 						const miniArr = [element, hintArr[index]]
 						selectedArr.push(miniArr);
 
@@ -50,12 +50,12 @@ export const giveHint = (mainArray, setAlert, setisFinished, setScore) => {
 			}
 
 			//search diagonally down-right
-			for (let index = element.orderIndex + 10; index < hintArr.length; index += 10) {
-				if (hintArr[index].isActive === false && hintArr[index].orderIndex % 9 === 0) {
+			for (let index = element.orderIndex + 11; index < hintArr.length; index += 11) {
+				if (hintArr[index].isActive === false && (hintArr[index].orderIndex + 1) % 10 === 0) {
 					break;
 				}
 				if (hintArr[index].isActive === true) {
-					if (index % 9 !== 0 && (element.orderIndex + 1) % 9 !== 0 && hintArr[index].orderIndex % 9 !== 0 && (element.value === hintArr[index].value || element.value + hintArr[index].value === 10)) {
+					if (index % 10 !== 0 && (element.orderIndex + 1) % 10 !== 0 && hintArr[index].orderIndex % 10 !== 0 && (element.value === hintArr[index].value || element.value + hintArr[index].value === 10)) {
 						const miniArr = [element, hintArr[index]]
 						selectedArr.push(miniArr);
 
