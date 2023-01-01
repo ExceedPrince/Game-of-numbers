@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/game-of-numbers/static/css/main.cbab881a.css",
-    "main.js": "/game-of-numbers/static/js/main.870e912b.js",
-    "index.html": "/game-of-numbers/index.html",
-    "main.cbab881a.css.map": "/game-of-numbers/static/css/main.cbab881a.css.map",
-    "main.870e912b.js.map": "/game-of-numbers/static/js/main.870e912b.js.map"
+    "main.css": "/static/css/main.bc2157ea.css",
+    "main.js": "/static/js/main.cddbeb10.js",
+    "index.html": "/index.html",
+    "main.bc2157ea.css.map": "/static/css/main.bc2157ea.css.map",
+    "main.cddbeb10.js.map": "/static/js/main.cddbeb10.js.map"
   },
   "entrypoints": [
-    "static/css/main.cbab881a.css",
-    "static/js/main.870e912b.js"
+    "static/css/main.bc2157ea.css",
+    "static/js/main.cddbeb10.js"
   ]
 }
