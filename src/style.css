@@ -514,6 +514,26 @@ body .app.mobile.extended {
   padding: unset;
 }
 
+body #notFound {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+}
+
+body #notFound #notFound-inner {
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  width: 100%;
+  margin: auto 0;
+  text-align: center;
+}
+
+body #notFound #notFound-inner a {
+  color: #9a0021;
+}
+
 body #musicContainer {
   display: -webkit-box;
   display: -ms-flexbox;

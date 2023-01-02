@@ -429,6 +429,25 @@ body {
 		}
 	}
 
+	#notFound {
+		position: relative;
+		width: 100%;
+		height: 100vh;
+
+		#notFound-inner {
+			position: absolute;
+			top: 50%;
+			transform: translateY(-50%);
+			width: 100%;
+			margin: auto 0;
+			text-align: center;
+
+			a {
+				color: #9a0021;
+			}
+		}
+	}
+
 	#musicContainer {
 		display: flex;
 		flex-direction: row;
