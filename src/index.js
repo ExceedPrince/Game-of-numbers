@@ -4,6 +4,7 @@ import './style.css';
 import App from './components/App';
 import Audio from './components/Audio';
 import Rules from './components/Rules';
+import NotFound from './components/NotFound';
 
 import CookiePage from './components/CookiePage';
 import { BrowserRouter, Route, Routes } from "react-router-dom";
@@ -17,6 +18,7 @@ root.render(
         <Route exact path="/" element={<CookiePage />} />
         <Route exact path="/rules" element={<Rules />} />
         <Route exact path="/game" element={<App />} />
+        <Route path='*' element={<NotFound />} />
       </Routes>
     </BrowserRouter>
   </React.StrictMode>
