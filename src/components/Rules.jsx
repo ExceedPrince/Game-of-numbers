@@ -3,7 +3,7 @@ import Slider from "react-slick";
 import { Link } from "react-router-dom";
 import { MdArrowBack } from "react-icons/md";
 
-import { rulesObject } from '../utils/rulesObject';
+import text from "../utils/translations.json";
 
 const Rules = () => {
 
@@ -17,11 +17,11 @@ const Rules = () => {
 
 	return (
 		<div id="rulesContainer">
-			<Link to={"/"} className="linkBack"><MdArrowBack className='svgIcons' /> Go back</Link>
+			<Link to={"/"} className="linkBack"><MdArrowBack className='svgIcons' /> {text[localStorage.getItem("Lang")].wrongUrl.backBtn}</Link>
 			<div id="rulesSlider">
-				<h2>What are the rules?</h2>
+				<h2>{text[localStorage.getItem("Lang")].rules.mainTitle}</h2>
 				<Slider {...settings}>
-					{rulesObject.map((item, index) => (
+					{text[localStorage.getItem("Lang")].rules.objects.map((item, index) => (
 						<div id={`rule-${index}`} key={`rule-${index}`} className="ruleSlide">
 							<h3>{item.title}</h3>
 							<div className='two-col-slide'>

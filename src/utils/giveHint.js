@@ -1,3 +1,5 @@
+import text from "../utils/translations.json";
+
 export const giveHint = (mainArray, setAlert, setisFinished, setScore) => {
 	const hintArr = mainArray;
 	const selectedArr = [];
@@ -80,7 +82,7 @@ export const giveHint = (mainArray, setAlert, setisFinished, setScore) => {
 			}, 3000);
 		})
 	} else {
-		setAlert({ message: "You're out of options! Ask for more numbers or start a new game!", type: "danger" });
+		setAlert({ message: text[localStorage.getItem("Lang")].alertText.noHint, type: "danger" });
 	}
 
 	setScore(prev => prev + 5);

@@ -16,6 +16,7 @@ import { generateRandomLetter } from '../utils/generateRandomLetter';
 import { compareSearch } from '../utils/compareSearch';
 import { giveHint } from '../utils/giveHint';
 import { temporaryTestArray } from '../utils/temporaryTestArray';
+import text from "../utils/translations.json";
 
 const App = () => {
   const [mainArr, setMainArr] = useState();
@@ -79,7 +80,7 @@ const App = () => {
       const checkArr = mainArr.filter(obj => obj.isActive === true);
 
       if (checkArr.length === 0) {
-        setAlert({ message: "Congratulations, you won!", type: "success" });
+        setAlert({ message: text[localStorage.getItem("Lang")].alertText.win, type: "success" });
         setisFinished(true);
       }
       localStorage.removeItem("savedData");
@@ -204,14 +205,14 @@ const App = () => {
 
   const choseGrid = (itemId, itemValue, targetId, targetValue) => {
     if (itemId !== targetId || itemValue !== +targetValue) {
-      setAlert({ message: "Please don't modify the DOM manually!", type: "danger" });
+      setAlert({ message: text[localStorage.getItem("Lang")].alertText.dontModify, type: "danger" });
       return;
     }
 
     const foundItem = mainArr.find(object => object.id === itemId);
 
     if (!foundItem || (foundItem && foundItem.value !== itemValue) || (foundItem && foundItem.isActive === false)) {
-      setAlert({ message: "Invalid data in the grid!", type: "danger" });
+      setAlert({ message: text[localStorage.getItem("Lang")].alertText.invalid, type: "danger" });
       return;
     }
 
@@ -222,7 +223,7 @@ const App = () => {
   const saveGame = (cellData) => {
     localStorage.setItem("savedData", JSON.stringify(cellData));
     localStorage.setItem("savedScore", JSON.stringify(score));
-    setAlert({ message: "The current state of your game has been saved!", type: "success" });
+    setAlert({ message: text[localStorage.getItem("Lang")].alertText.saved, type: "success" });
   }
 
   const setBestScoreCookie = (name, user, value) => {
@@ -261,27 +262,27 @@ const App = () => {
   })();
 
   return (
-    <div className={`app ${mobileWork === "true" ? "mobile" : ""}`}>
+    <div className={`app ${mobileWork === "true" ? "mobile" : ""} `}>
       {mobileWork && mobileWork === "false" ? (
         <div id="mobilePopUp">
           <div className="mobilePopUp-inner">
-            <h1>Please, rotate your screen for better user experience!</h1>
+            <h1>{text[localStorage.getItem("Lang")].responsive.rotate}</h1>
             <img src='../../img/rotate_screen.gif' alt="rotate screen" />
           </div>
         </div>
       ) : mobileWork && mobileWork === "uncertain" ? (
         <div id="mobilePopUp">
           <div className="mobilePopUp-inner">
-            <h1>What kind of device are you using currently?</h1>
+            <h1>{text[localStorage.getItem("Lang")].responsive.deviceQuestion}</h1>
             <div className="mobilePopUp-twoCol">
               <div className="mobilePopUp-col">
-                <h2>Computer/<br />Notebook</h2>
-                <p>Please, zoom out (CTRL/⌘ and -) for better user experience!</p>
+                <h2 style={{ whiteSpace: "pre-line" }}>{text[localStorage.getItem("Lang")].responsive.computer}</h2>
+                <p>{text[localStorage.getItem("Lang")].responsive.zoomOut}</p>
                 <img className='pic' src='../../img/zoom-out.png' alt="rotate screen" />
               </div>
               <div className="mobilePopUp-col">
-                <h2>Tablet/<br />iPad</h2>
-                <p>Please, rotate your screen for better user experience!</p>
+                <h2 style={{ whiteSpace: "pre-line" }}>{text[localStorage.getItem("Lang")].responsive.tablet}</h2>
+                <p>{text[localStorage.getItem("Lang")].responsive.rotate}</p>
                 <img src='../../img/rotate_screen.gif' alt="rotate screen" />
               </div>
             </div>
@@ -290,19 +291,19 @@ const App = () => {
       ) : null
       }
       {mobileWork !== "uncertain" && mobileWork !== "false" ? (
-        <Link to={"/"} className="linkBack"><MdArrowBack className='svgIcons' /> Go back</Link>
+        <Link to={"/"} className="linkBack"><MdArrowBack className='svgIcons' /> {text[localStorage.getItem("Lang")].wrongUrl.backBtn}</Link>
       ) : null}
       {mobileWork !== "uncertain" && mobileWork !== "false" ? (
         <div id="mainContainer">
           <div id="scoreContainer">
-            <span className="scoreSpan">Your score: {score}</span>
-            <span className="scoreSpan">Best score: {bestScore.point > 0 ? `${bestScore.user} (${bestScore.point})` : "-"}</span>
+            <span className="scoreSpan">{text[localStorage.getItem("Lang")].game.yourScore} {score}</span>
+            <span className="scoreSpan">{text[localStorage.getItem("Lang")].game.bestScore} {bestScore.point > 0 ? `${bestScore.user} (${bestScore.point})` : "-"}</span>
           </div>
           <Zoom cascade duration={1000}>
-            <div id="gridTable" className={`${isFinished ? "finished" : ""}`}>
+            <div id="gridTable" className={`${isFinished ? "finished" : ""} `}>
               {mainArr &&
                 mainArr.map((item, index) => (
-                  <div key={index} id={item.id} data-order={item.orderIndex} className={`gridCell ${item.isActive === true ? "" : "disabled"}`} onClick={(e) => choseGrid(item.id, item.value, e.target.id, e.target.innerText)}>{item.value}</div>
+                  <div key={index} id={item.id} data-order={item.orderIndex} className={`gridCell ${item.isActive === true ? "" : "disabled"} `} onClick={(e) => choseGrid(item.id, item.value, e.target.id, e.target.innerText)}>{item.value}</div>
                 ))
               }
             </div>
@@ -312,20 +313,20 @@ const App = () => {
               <div id="finishContainer">
                 {!submitted && (bestScore.point === 0 || score <= bestScore.point) ?
                   <form onSubmit={(e) => onSubmit(e, playerName)}>
-                    <input type="text" id="nameInput" placeholder='*Your name*' minLength={2} value={playerName} onChange={(e) => setPlayerName(e.target.value)} />
-                    <button type="submit" id="submitBtn"><GoChecklist className='svgIcons' /> Submit</button>
+                    <input type="text" id="nameInput" placeholder={text[localStorage.getItem("Lang")].game.placeholder} minLength={2} value={playerName} onChange={(e) => setPlayerName(e.target.value)} />
+                    <button type="submit" id="submitBtn"><GoChecklist className='svgIcons' /> {text[localStorage.getItem("Lang")].game.submit}</button>
                   </form>
                   :
                   null
                 }
-                <button type="button" className="actionBtn" id="newGameBtn" onClick={() => startNewGame()}><TiTick className='svgIcons' /> New Game</button>
+                <button type="button" className="actionBtn" id="newGameBtn" onClick={() => startNewGame()}><TiTick className='svgIcons' /> {text[localStorage.getItem("Lang")].game.newGame}</button>
               </div>
               :
               <>
-                <button type="button" className="actionBtn" id="newNumBtn" onClick={() => addToGrid(mainArr)}><AiOutlineAppstoreAdd className='svgIcons' /> Add Numbers</button>
-                <button type="button" className="actionBtn" id="resetBtn" onClick={() => resetGrid()}><RxReset className='svgIcons' /> New Game</button>
-                <button type="button" className="actionBtn" id="hintBtn" onClick={() => giveHint(mainArr, setAlert, setisFinished, setScore)}><TbZoomQuestion className='svgIcons' /> Hint</button>
-                <button type="button" className="actionBtn" id="saveBtn" onClick={() => saveGame(mainArr)}><RiSave3Fill className='svgIcons' /> Save</button>
+                <button type="button" className="actionBtn" id="newNumBtn" onClick={() => addToGrid(mainArr)}><AiOutlineAppstoreAdd className='svgIcons' /> {text[localStorage.getItem("Lang")].game.addNums}</button>
+                <button type="button" className="actionBtn" id="resetBtn" onClick={() => resetGrid()}><RxReset className='svgIcons' /> {text[localStorage.getItem("Lang")].game.newGame}</button>
+                <button type="button" className="actionBtn" id="hintBtn" onClick={() => giveHint(mainArr, setAlert, setisFinished, setScore)}><TbZoomQuestion className='svgIcons' /> {text[localStorage.getItem("Lang")].game.hint}</button>
+                <button type="button" className="actionBtn" id="saveBtn" onClick={() => saveGame(mainArr)}><RiSave3Fill className='svgIcons' /> {text[localStorage.getItem("Lang")].game.save}</button>
               </>
             }
           </div>

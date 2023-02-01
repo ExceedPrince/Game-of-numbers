@@ -33,10 +33,107 @@ body {
 				}
 			}
 
+			#languageSelector {
+				display: inline-block;
+				position: relative;
+				min-width: 150px;
+				margin-left: 10px;
+				border: 1px solid black;
+
+				#selectedLanguage {
+					position: relative;
+					padding: 5px 0px 5px 10px;
+					text-align: left;
+					background-image: linear-gradient(#d2155a00, #d2155a23, #d2155a7b);
+					background-repeat: no-repeat;
+					background-position: 0 25px;
+					z-index: 1;
+					transition: background-position 300ms ease-in-out;
+
+					&::after {
+						content: "⯆";
+						position: absolute;
+						top: 0;
+						right: 5px;
+						translate: 0 30%;
+						rotate: 0deg;
+						transition: rotate 300ms ease-in-out;
+					}
+
+					&:hover {
+						cursor: pointer;
+						background-position: 0 0;
+					}
+
+					&.langOpen {
+						background-position: 0 0;
+
+						&::after {
+							rotate: 180deg;
+						}
+					}
+
+					.flagContainer {
+
+						img {
+							width: 20px;
+							translate: 0 15%;
+						}
+					}
+
+					.flagName {
+						padding-left: 10px;
+					}
+				}
+
+				#languageOptions {
+					position: absolute;
+					top: 36px;
+					left: -1px;
+					pointer-events: none;
+
+
+					&.clickable {
+						pointer-events: all;
+					}
+
+					.languageOption {
+						display: flex;
+						flex-direction: row;
+						flex-wrap: nowrap;
+						min-width: 140px;
+						border-bottom: 1px solid black;
+						border-left: 1px solid black;
+						border-right: 1px solid black;
+						background-color: #e56276;
+						padding: 5px 0 5px 10px;
+						cursor: pointer;
+						transition: background-color 300ms ease-in-out;
+
+						&:hover {
+							background-color: #fc7e91
+						}
+
+						.flagContainer {
+
+							img {
+								width: 20px;
+								translate: 0 15%;
+							}
+						}
+
+						.flagName {
+							padding-left: 10px;
+						}
+					}
+				}
+			}
+
 			.preloadbuttons {
 				display: flex;
 				gap: 32px;
 				justify-content: center;
+				margin: 10px 0;
 			}
 
 			.actionBtn {
@@ -48,6 +145,10 @@ body {
 				font-size: 24px;
 				box-shadow: 5px 5px 5px rgba(87, 0, 19, 0.538);
 				transition: background-color 0.3s ease-in-out;
+
+				&#continueBtn {
+					margin-top: 15px;
+				}
 
 				&:hover {
 					background-color: #ff3c83;
@@ -82,6 +183,13 @@ body {
 				&.visible {
 					opacity: 100%;
 				}
+			}
+
+			#thankyou-message {
+				position: absolute;
+				bottom: 0;
+				left: 50%;
+				translate: -50% 0;
 			}
 		}
 	}
@@ -565,6 +673,17 @@ body {
 
 @media only screen and (max-width: 767px) {
 	body {
+		#preloadPage {
+
+			.preloadContent {
+
+				#languageSelector {
+					margin: 10px
+				}
+
+			}
+
+		}
 
 		#rulesContainer {
 			height: unset;

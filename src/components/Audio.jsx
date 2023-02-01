@@ -3,7 +3,6 @@ import React, { useState, useEffect, useLayoutEffect } from 'react';
 import { TbPlayerTrackPrev, TbPlayerTrackNext } from "react-icons/tb";
 import { CgPlayButtonO, CgPlayStopO } from "react-icons/cg";
 import { BsMusicNoteList } from "react-icons/bs";
-import { MdMusicOff } from "react-icons/md";
 
 const Audio = (props) => {
 	const [music, setMusic] = useState(null);
@@ -81,7 +80,7 @@ const Audio = (props) => {
 			<div id="audioBtn" className="audioBtns" onClick={() => setPlay(!play)}>{play ? <CgPlayStopO /> : <CgPlayButtonO />}</div>
 			<div id="next" className="audioBtns" onClick={() => changeMusic("next")}><TbPlayerTrackNext /></div>
 			{isMobile ? (
-				<div id="audioCallBtn" className={musicOpen ? "open" : ""} onClick={() => setMusicOpen(!musicOpen)}>{!musicOpen ? <BsMusicNoteList /> : <MdMusicOff />}</div>
+				<div id="audioCallBtn" className={musicOpen ? "open" : ""} onClick={() => setMusicOpen(!musicOpen)}><BsMusicNoteList /></div>
 			)
 				: null}
 		</div>

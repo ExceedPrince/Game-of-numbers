@@ -4,13 +4,20 @@ import CookieConsent, { Cookies } from "react-cookie-consent";
 import { TiTick } from "react-icons/ti";
 import { AiOutlineStop } from "react-icons/ai";
 import { FaTrashAlt } from "react-icons/fa";
+import { RxReset } from "react-icons/rx";
+import { VscDebugContinue } from "react-icons/vsc";
 
 import Alert from './Alert';
+import LanguageSelect from './LanguageSelect';
+import text from "../utils/translations.json";
 
 const CookiePage = () => {
 	const [acceptCookie, setAcceptCookie] = useState(false);
 	const [delClicked, setDelClicked] = useState(0);
 	const [alert, setAlert] = useState({ message: "", type: "" });
+	const [wantToPlay, setWantToPlay] = useState(true);
+	const [chosenLang, setChosenLang] = useState(localStorage.getItem("Lang") ? localStorage.getItem("Lang") : null);
+	const [showThanks, setshowThanks] = useState(false);
 
 	useEffect(() => {
 		if (document.cookie.indexOf("TableGameCookie=true") > -1) {
@@ -51,39 +58,72 @@ const CookiePage = () => {
 		}
 	}, [delClicked])
 
+	const showThankyou = () => {
+		setshowThanks(true);
+		setTimeout(() => {
+			setshowThanks(false);
+		}, 5000);
+	}
+
 	return (
 		<div id="preloadPage">
-			{acceptCookie && localStorage.getItem("savedData") ?
+			{acceptCookie && localStorage.getItem("savedData") && wantToPlay && !localStorage.getItem("askedContinue") ?
 				<div className='preloadContent'>
 					<h1>Game of Numbers</h1>
-					<p>You have saved data on this device. Would you like to continue that previous game?</p>
+					<p>{text[localStorage.getItem("Lang")].haveSavedData.question}</p>
 					<div className='preloadbuttons'>
 						<Link to="/game" state={{ saved: true, navigated: true }}>
-							<button type='button' className="actionBtn" id="loadBtn"><TiTick className='svgIcons' /> Yes</button>
+							<button type='button' className="actionBtn" id="loadBtn"><TiTick className='svgIcons' /> {text[localStorage.getItem("Lang")].haveSavedData.yes}</button>
 						</Link>
 						<Link to="/game" state={{ saved: false, navigated: true }}>
-							<button type='button' className="actionBtn" id="rejectAndNewBtn" onClick={() => localStorage.removeItem("savedData")}><AiOutlineStop className='svgIcons' /> No, I start a new game</button>
+							<button type='button' className="actionBtn" id="rejectAndNewBtn" onClick={() => localStorage.removeItem("savedData")}><AiOutlineStop className='svgIcons' /> {text[localStorage.getItem("Lang")].haveSavedData.no}</button>
 						</Link>
+					</div>
+					<div className='preloadbuttons'>
+						<button type='button' className="actionBtn" id="backToMainPageBtn" onClick={() => { setWantToPlay(false); localStorage.setItem("askedContinue", "true") }}><RxReset className='svgIcons' /> {text[localStorage.getItem("Lang")].haveSavedData.goBack}</button>
 					</div>
 				</div>
 				:
 				<div className='preloadContent'>
 					<h1>Game of Numbers</h1>
-					<p>Welcome to the world of numbers!<br />Please, accept the cookies (if you still haven't) and head to the game!</p>
-					<p>Click <Link to="/rules" className='link'>here</Link> to read a rules!</p>
-					<p>Have fun!</p>
+					<span>{text[localStorage.getItem("Lang")].intro.chooseLanguage} <LanguageSelect chosenLang={chosenLang} setChosenLang={setChosenLang} showThankyou={showThankyou} /></span>
+					<p>
+						{text[localStorage.getItem("Lang")].intro.welcome}
+						<br />
+						{text[localStorage.getItem("Lang")].intro.acceptCookie}
+					</p>
+					<p>
+						{text[localStorage.getItem("Lang")].intro.forRules.split("/").map((item, index) => {
+							if (index === 1) {
+								return <Link to="/rules" key={`rulesPart${index}`} className='link'>{item}</Link>
+							} else {
+								return item
+							}
+						})
+						}
+					</p>
+					<p>{text[localStorage.getItem("Lang")].intro.haveFun}</p>
 					{acceptCookie &&
 						<Link to="/game" state={{ navigated: true }}>
-							<button type='button' className="actionBtn" id="startNewBtn"><TiTick className='svgIcons' /> Start a new game</button>
+							<button type='button' className="actionBtn" id="startNewBtn" onClick={() => localStorage.removeItem("askedContinue")}><TiTick className='svgIcons' /> {text[localStorage.getItem("Lang")].intro.startGame}</button>
 						</Link>
 					}
-					<button type='button' id="delScoreBtn" onClick={() => setDelClicked(prev => prev + 1)}><FaTrashAlt className='svgIcons' /> Delete the scores</button>
+					{acceptCookie && localStorage.getItem("savedData") ?
+						<Link to="/game" state={{ saved: true, navigated: true }}>
+							<button type='button' className="actionBtn" id="continueBtn" onClick={() => localStorage.removeItem("askedContinue")}><VscDebugContinue className='svgIcons' /> {text[localStorage.getItem("Lang")].intro.continueGame}</button>
+						</Link>
+						: null
+					}
 
+					<button type='button' id="delScoreBtn" onClick={() => setDelClicked(prev => prev + 1)}><FaTrashAlt className='svgIcons' /> {text[localStorage.getItem("Lang")].intro.deleteScores}</button>
+					{showThanks &&
+						<div id="thankyou-message">{text[localStorage.getItem("Lang")].intro.thanks}</div>
+					}
 				</div>
 			}
 			<CookieConsent
 				location="bottom"
-				buttonText="Ok, I understand"
+				buttonText={text[localStorage.getItem("Lang")].intro.cookieButton}
 				cookieName="TableGameCookie"
 				style={{ background: "#d11780" }}
 				buttonStyle={{ background: "rgb(255, 199, 121)", color: "#4e503b", fontSize: "13px" }}
@@ -92,7 +132,7 @@ const CookiePage = () => {
 					setAcceptCookie(true)
 				}}
 			>
-				This website uses cookies and stored data to enhance the user experience.
+				{text[localStorage.getItem("Lang")].intro.cookieContent}
 			</CookieConsent>
 			{
 				alert.message.length > 0 &&

@@ -1,0 +1,338 @@
+{
+	"English": {
+		"haveSavedData": {
+			"question": "You have saved data on this device. Would you like to continue that previous game?",
+			"yes": "Yes",
+			"no": "No, I start a new game",
+			"goBack": "No, go back to the main page"
+		},
+		"intro": {
+			"welcome": "Welcome to the world of numbers!",
+			"chooseLanguage": "Choose your language:",
+			"acceptCookie": "Please, accept the cookies (if you still haven't) and head to the game!",
+			"forRules": "Click /here/ to read the rules!",
+			"haveFun": "Have fun!",
+			"startGame": "Start a new game",
+			"continueGame": "Continue the saved game",
+			"deleteScores": "Delete the scores",
+			"cookieContent": "This website uses cookies and stored data to enhance the user experience.",
+			"cookieButton": "Ok, I understand",
+			"thanks": ""
+		},
+		"alertText": {
+			"scoresDeleted": "Scores are successfully deleted!",
+			"win": "Congratulations, you won!",
+			"dontModify": "Please don't modify the DOM manually!",
+			"invalid": "Invalid data in the grid!",
+			"saved": "The current state of your game has been saved!",
+			"noHint": "You're out of options! Ask for more numbers or start a new game!"
+		},
+		"responsive": {
+			"rotate": "Please, rotate your screen for better user experience!",
+			"deviceQuestion": "What kind of device are you using currently?",
+			"computer": "Computer/\nNotebook",
+			"zoomOut": "Please, zoom out (CTRL/⌘ and -) for better user experience!",
+			"tablet": "Tablet/\niPad"
+		},
+		"wrongUrl": {
+			"ops": "Oops! You seem to be lost.",
+			"offer": "If you want to go back to the main page, click on the link below:",
+			"mainPage": "Main page",
+			"backBtn": "Go back"
+		},
+		"game": {
+			"yourScore": "Your score:",
+			"bestScore": "Best score:",
+			"placeholder": "*Your name*",
+			"submit": "Submit",
+			"newGame": "New Game",
+			"addNums": "Add Numbers",
+			"hint": "Hint",
+			"save": "Save"
+		},
+		"rules": {
+			"mainTitle": "What are the rules?",
+			"objects": [
+				{
+					"title": "What's the goal?",
+					"imgSrc": "rule_01.png",
+					"description": "Your main goal is picking pairs of numbers for making the whole table empty. \n\nYou can create pairs if the numbers are the same or if their sum is equal to 10!"
+				},
+				{
+					"title": "Picking horizontally",
+					"imgSrc": "rule_02.png",
+					"description": "You can create pairs if the correct numbers are in the same row. But if there is at least one active number between them, you can't create pairs! \n\nBut if every number between your chosen ones are non-active numbers, then you can create pairs by skipping those non-active numbers!"
+				},
+				{
+					"title": "Picking horizontally, but from different rows",
+					"imgSrc": "rule_03.png",
+					"description": "You can create pairs \"horizontally\" if your first number is the last active number in that row, and your next compatible number is the first active number in another row. \n\nIf there is at least one active number between them, you can't create pairs! But if every number between your chosen ones are non-active numbers, then you can create pairs by skipping those non-active numbers (or rows as well)!"
+				},
+				{
+					"title": "Picking vertically",
+					"imgSrc": "rule_04.png",
+					"description": "You can create pairs if the correct numbers are in the same column. But if there is at least one active number between them, you can't create pairs! \n\nBut if every number between your chosen ones are non-active numbers, then you can create pairs by skipping those non-active numbers!"
+				},
+				{
+					"title": "Picking diagonally",
+					"imgSrc": "rule_05.png",
+					"description": "You can create pairs if the correct numbers are placed diagonally. But if there is at least one active number between them, you can't create pairs! \n\nBut if every number between your chosen ones are non-active numbers, then you can create pairs by skipping those non-active numbers!"
+				},
+				{
+					"title": "Adding new numbers",
+					"imgSrc": "rule_06.png",
+					"description": "If you're out of options, then you can click on the \"Add Numbers\" for adding the copies of all active numbers to the table."
+				},
+				{
+					"title": "Asking for help",
+					"imgSrc": "rule_07.png",
+					"description": "If you're uncertain about your next step, you can ask for some help by clicking on the \"Hint\" button."
+				},
+				{
+					"title": "Starting new game",
+					"imgSrc": "rule_08.png",
+					"description": "You can exit your currect game anytime by clicking on the \"New Game\" button and start a new one."
+				},
+				{
+					"title": "Saving the game",
+					"imgSrc": "rule_09.png",
+					"description": "You can save your current game anytime but there's only one slot to use for saving! \n\nThe next time you can choose whether to continue your saved game or start a new one. Whatever you choose your saved data will be removed and you can't load it anymore!"
+				},
+				{
+					"title": "Getting points",
+					"imgSrc": "rule_10.png",
+					"description": "You receive points for pairing numbers (1), adding new numbers (3) and asking for help (5). \n\nTry to collect as little points as possible to be the best on this device!"
+				},
+				{
+					"title": "Refreshing Scores",
+					"imgSrc": "rule_11.png",
+					"description": "You can erase the best score by clicking on the \"Delete the scores\" button. \n\nGood luck for calling it forth 😄"
+				}
+			]
+		}
+	},
+	"Deutsch": {
+		"haveSavedData": {
+			"question": "Du hast Daten auf diesem Gerät gespeichert. Möchtest du das vorherige Spiel fortsetzen?",
+			"yes": "Ja",
+			"no": "Nein, ich beginne ein neues Spiel",
+			"goBack": "Nein, zurück zur Hauptseite"
+		},
+		"intro": {
+			"welcome": "Willkommen in der Welt der Zahlen!",
+			"chooseLanguage": "Wähle deine Sprache:",
+			"acceptCookie": "Bitte akzeptiere die Cookies (falls du es noch nicht getan hast) und beginne das Spiel!",
+			"forRules": "Klicke /hier,/ um die Regeln zu lesen!",
+			"haveFun": "Viel Spaß!",
+			"startGame": "Ein neues Spiel beginnen",
+			"continueGame": "Das gespeicherte Spiel fortsetzen",
+			"deleteScores": "Ergebnis löschen",
+			"cookieContent": "Diese Website verwendet Cookies und gespeicherte Daten, um die Benutzerfreundlichkeit zu verbessern.",
+			"cookieButton": "Ok, ich habe verstanden",
+			"thanks": "Vielen Dank an Stefanie für die Übersetzung"
+		},
+		"alertText": {
+			"scoresDeleted": "Der Spielstand wurde erfolgreich gelöscht!",
+			"win": "Herzlichen Glückwunsch, du hast gewonnen!",
+			"dontModify": "Bitte ändere das DOM nicht manuell!",
+			"invalid": "Ungültige Daten!",
+			"saved": "Der aktuelle Stand deines Spiels wurde gespeichert!",
+			"noHint": "Du hast keine Optionen mehr! Frag nach weiteren Zahlen oder beginne ein neues Spiel!"
+		},
+		"responsive": {
+			"rotate": "Bitte dreh deinen Bildschirm für eine bessere Spielerfahrung!",
+			"deviceQuestion": "Was für ein Gerät benutzt du gerade?",
+			"computer": "Computer/\nNotebook",
+			"zoomOut": "Verkleinere den Bildschirm (STRG/⌘ und -) für eine bessere Spielerfahrung!",
+			"tablet": "Tablet/\niPad"
+		},
+		"wrongUrl": {
+			"ops": "Huch! Du scheinst dich verlaufen zu haben.",
+			"offer": "Wenn du zur Hauptseite zurückkehren möchten, klicke auf den folgenden Link:",
+			"mainPage": "Hauptseite",
+			"backBtn": "Zurück"
+		},
+		"game": {
+			"yourScore": "Dein Ergebnis:",
+			"bestScore": "Beste Punktzahl:",
+			"placeholder": "*Dein Name*",
+			"submit": "Senden",
+			"newGame": "Neues Spiel",
+			"addNums": "Zahlen hinzufügen",
+			"hint": "Tippen",
+			"save": "Speichern"
+		},
+		"rules": {
+			"mainTitle": "Was sind die Regeln?",
+			"objects": [
+				{
+					"title": "Was ist das Ziel?",
+					"imgSrc": "rule_01.png",
+					"description": "Dein Hauptziel ist es, Zahlenpaare zu finden, um die ganze Tabelle leer zu machen. \n\nDu kannst Paare bilden, wenn die Zahlen die gleichen sind oder wenn ihre Summe gleich 10 ist!"
+				},
+				{
+					"title": "Horizontal wählen",
+					"imgSrc": "rule_02.png",
+					"description": "Du kannst Paare bilden, wenn die richtigen Zahlen in der gleichen Reihe liegen. Wenn aber mindestens eine aktive Zahl dazwischen liegt, kannst du keine Paare bilden! \n\nWenn aber alle Zahlen zwischen den von dir gewählten Zahlen nicht aktiv sind, kannst du Paare bilden, indem du diese nicht aktiven Zahlen überspringst!"
+				},
+				{
+					"title": "Horizontal wählen, aber aus verschiedenen Reihen",
+					"imgSrc": "rule_03_de.png",
+					"description": "Du kannst \"horizontal\" Paare bilden, wenn deine erste Zahl die letzte aktive Zahl in dieser Reihe ist, und die nächste kompatible Zahl die erste aktive Zahl in einer anderen Reihe ist. \n\nWenn dazwischen mindestens eine aktive Zahl liegt, kannst du keine Paare bilden! Wenn jedoch alle Zahlen zwischen den von dir gewählten Zahlen nicht aktiv sind, kannst du Paare bilden, indem du diese nicht aktiven Zahlen (oder auch Reihen) überspringst!"
+				},
+				{
+					"title": "Vertikal wählen",
+					"imgSrc": "rule_04.png",
+					"description": "Du kannst Paare bilden, wenn die richtigen Zahlen in der gleichen Spalte stehen. Wenn jedoch mindestens eine aktive Zahl dazwischen liegt, kannst du keine Paare bilden! \n\nWenn aber alle Zahlen zwischen den von dir gewählten Zahlen nicht aktiv sind, kannst du Paare bilden, indem du diese nicht aktiven Zahlen überspringst!"
+				},
+				{
+					"title": "Diagonal wählen",
+					"imgSrc": "rule_05_de.png",
+					"description": "Du kannst Paare bilden, wenn die richtigen Zahlen diagonal angeordnet sind. Wenn aber mindestens eine aktive Zahl dazwischen liegt, kannst du keine Paare bilden! \n\nWenn aber alle Zahlen zwischen den von dir gewählten Zahlen nicht aktiv sind, kannst du Paare bilden, indem du diese nicht aktiven Zahlen überspringst!"
+				},
+				{
+					"title": "Neue Zahlen hinzufügen",
+					"imgSrc": "rule_06_de.png",
+					"description": "Wenn du keine weiteren Optionen mehr hast, kannst du auf \"Zahlen hinzufügen\" klicken, um die Kopien aller aktiven Zahlen zur Tabelle hinzuzufügen."
+				},
+				{
+					"title": "Um Hilfe bitten",
+					"imgSrc": "rule_07_de.png",
+					"description": "Wenn du unsicher bist, wie du weiter vorgehen sollst, klicke auf die Schaltfläche \"Tipp\" um um Hilfe zu bitten."
+				},
+				{
+					"title": "Neues Spiel beginnen",
+					"imgSrc": "rule_08_de.png",
+					"description": "Du kannst dein aktuelles Spiel jederzeit beenden, indem du auf die Schaltfläche \"Neues Spiel\" klickst und ein neues Spiel beginnst."
+				},
+				{
+					"title": "Das Spiel speichern",
+					"imgSrc": "rule_09_de.png",
+					"description": "Du kannst dein aktuelles Spiel jederzeit speichern, aber es gibt nur einen Slot für die Speicherung! \n\nBeim nächsten Mal kannst du wählen, ob du dein gespeichertes Spiel fortsetzen oder ein neues Spiel beginnen möchtest. Wie auch immer du dich entscheidest, deine gespeicherten Daten werden gelöscht und du kannst sie nicht mehr laden!"
+				},
+				{
+					"title": "Punkte sammeln",
+					"imgSrc": "rule_10_de.png",
+					"description": "Du erhältst Punkte für das Paaren von Zahlen (1), das Hinzufügen neuer Zahlen (3) und das Bitten um Hilfe (5). \n\nVersuche so wenig Punkte wie möglich zu sammeln, um der/die Beste auf diesem Gerät zu sein!"
+				},
+				{
+					"title": "Punktzahlen aktualisieren",
+					"imgSrc": "rule_11_de.png",
+					"description": "Du kannst die beste Punktzahl löschen, indem du auf \"Ergebnis löschen\" klickst. Viel Glück bei der Suche 😄"
+				}
+			]
+		}
+	},
+	"Polski": {
+		"haveSavedData": {
+			"question": "Zapisałeś dane na tym urządzeniu. Czy chcesz kontynuować poprzednią grę?",
+			"yes": "Tak",
+			"no": "Nie, rozpocznij nową grę",
+			"goBack": "Nie, powrót do strony głównej"
+		},
+		"intro": {
+			"welcome": "Witaj w świecie liczb!",
+			"chooseLanguage": "Wybierz język:",
+			"acceptCookie": "Zaakceptuj pliki cookie (jeśli jeszcze tego nie zrobiłeś) i ruszaj do gry!",
+			"forRules": "Kliknij /tutaj/ aby przeczytać zasady gry!",
+			"haveFun": "Dobrej zabawy!",
+			"startGame": "Rozpocznij nową grę",
+			"continueGame": "Kontynuuj zapisaną grę",
+			"deleteScores": "Usuń wyniki",
+			"cookieContent": "Strona korzysta z plików cookie i zebranych danych.",
+			"cookieButton": "Ok, rozumiem",
+			"thanks": "Podziękowania dla Alicja za tłumaczenie"
+		},
+		"alertText": {
+			"scoresDeleted": "Wyniki zostały pomyślnie usunięte!",
+			"win": "Gratulacje wygrałeś!",
+			"dontModify": "Nie zmieniaj własnoręcznie struktury DOM!",
+			"invalid": "Niepoprawne dane w siatce!",
+			"saved": "Obecny stan gry został zapisany!",
+			"noHint": "Koniec ruchów! Poproś o więcej liczb lub rozpocznij nową grę!"
+		},
+		"responsive": {
+			"rotate": "Obróć ekran urządzenia mobilnego!",
+			"deviceQuestion": "Z jakiego urządzenia korzystasz?",
+			"computer": "Komputer/\nNotebook",
+			"zoomOut": "Pomniejsz ekran (za pomocą CTRL/⌘ i -)!",
+			"tablet": "Tablet/\niPad"
+		},
+		"wrongUrl": {
+			"ops": "Ups! Wygląda na to, że się zgubiłeś.",
+			"offer": "Jeżeli chcesz powrócić do strony głównej, kliknij w poniższy link:",
+			"mainPage": "Strona główna",
+			"backBtn": "Powrót"
+		},
+		"game": {
+			"yourScore": "Twój wynik:",
+			"bestScore": "Najlepszy wynik:",
+			"placeholder": "*Twoje imię*",
+			"submit": "Wyślij",
+			"newGame": "Nowa gra",
+			"addNums": "Więcej liczb",
+			"hint": "Podpowiedź",
+			"save": "Zapisz"
+		},
+		"rules": {
+			"mainTitle": "Jakie są zasady?",
+			"objects": [
+				{
+					"title": "Jaki jest cel?",
+					"imgSrc": "rule_01.png",
+					"description": "Głównym celem jest tworzenie par liczb tak aby na koniec tabela pozostała pusta. \n\nPary mogą składać się z tych samych liczb lub jeżeli suma danych liczb wynosi 10!"
+				},
+				{
+					"title": "Wybieranie poziomo",
+					"imgSrc": "rule_02.png",
+					"description": "Możesz tworzyć pary jeżeli odpowiednie numery znajdują się w tym samym rzędzie. Jeżeli jednak między nimi znajduje się conajmniej jeden aktywny numer, nie możesz stworzyć pary! \n\nJednak jeżeli wszystkie liczby między liczbami wybranymi przez Ciebie są nieaktywne, możesz stworzyć parę przeskakując liczby nieaktywne!"
+				},
+				{
+					"title": "Wybieranie poziomo ale z innych rzędów",
+					"imgSrc": "rule_03_pl.png",
+					"description": "Możesz tworzyć pary \"poziomo\" jeżeli pierwszy wybrany przez Ciebie numer jest ostatnim aktywnym numerem w danym rzędzie, i jeżeli następny pasujący numer jest pierwszym aktywnym numerem w kolejnym rzędzie. \n\nJeżeli jednak między nimi znajduje się conajmniej jeden aktywny numer, nie możesz stworzyć pary! Jednak jeżeli wszystkie liczby między liczbami wybranymi przez Ciebie są nieaktywne, możesz stworzyć parę przeskakując liczby nieaktywne!"
+				},
+				{
+					"title": "Wybieranie pionowo",
+					"imgSrc": "rule_04.png",
+					"description": "Możesz tworzyć pary jeżeli odpowiednie numery są w tej samej kolumnie. Jeżeli jednak między nimi znajduje się conajmniej jeden aktywny numer, nie możesz stworzyć pary! \n\nJednak jeżeli wszystkie liczby między liczbami wybranymi przez Ciebie są nieaktywne, możesz stworzyć parę przeskakując liczby nieaktywne!"
+				},
+				{
+					"title": "Wybieranie po przekątnej",
+					"imgSrc": "rule_05_pl.png",
+					"description": "Możesz tworzyć pary jeśli odpowiednie numery są umieszczone po przekątnej od siebie. Jeżeli jednak między nimi znajduje się conajmniej jeden aktywny numer, nie możesz stworzyć pary! \n\nJednak jeżeli wszystkie liczby między liczbami wybranymi przez Ciebie są nieaktywne, możesz stworzyć parę przeskakując liczby nieaktywne!"
+				},
+				{
+					"title": "Nowe liczby",
+					"imgSrc": "rule_06_pl.png",
+					"description": "Kiedy skończą Ci się ruchy możesz poprosić o kopię liczb, które zostały w tabeli klikając w przycisk \"Nowe liczby\"."
+				},
+				{
+					"title": "Pomoc",
+					"imgSrc": "rule_07_pl.png",
+					"description": "Jeżeli nie masz pewności co do kolejnego ruchu, możesz poprosić o pomoc klikając w przycisk \"Podpowiedź\"."
+				},
+				{
+					"title": "Rozpoczęcie nowej gry",
+					"imgSrc": "rule_08_pl.png",
+					"description": "Możesz wyjść z gry klikając przycisk \"Nowa gra\" co automatycznie pomoże Ci rozpocząć kolejną partię."
+				},
+				{
+					"title": "Zapisywanie gry",
+					"imgSrc": "rule_09_pl.png",
+					"description": "Możesz zapisać swoją grę na którymkolwiek etapie jednak możesz to zrobić tylko raz! \n\nNastępnym razem możesz wybrać kontynuację poprzedniej gry lub rozpocząć nową. Żadna z tych opcji nie!"
+				},
+				{
+					"title": "Zdobywanie punktów",
+					"imgSrc": "rule_10_pl.png",
+					"description": "Zdobywasz punkty za tworzenie par liczb (1), dodawanie nowych liczb (3), prośbę o pomoc (5). \n\nSpróbuj zebrać jak najmniej punktów aby osiągnąć najlepszy wynik na tym urządzeniu!"
+				},
+				{
+					"title": "Odświeżanie punktów",
+					"imgSrc": "rule_11_pl.png",
+					"description": "Możesz usunąć swój najlepszy wynik klikając w przycisk \"Usuń wyniki\". \n\nPowodzenia w próbach przywołania go 😄"
+				}
+			]
+		}
+	}
+}

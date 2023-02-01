@@ -48,6 +48,105 @@ body #preloadPage .preloadContent p .link:hover {
   cursor: pointer;
 }
 
+body #preloadPage .preloadContent #languageSelector {
+  display: inline-block;
+  position: relative;
+  min-width: 150px;
+  margin-left: 10px;
+  border: 1px solid black;
+}
+
+body #preloadPage .preloadContent #languageSelector #selectedLanguage {
+  position: relative;
+  padding: 5px 0px 5px 10px;
+  text-align: left;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#d2155a00), color-stop(#d2155a23), to(#d2155a7b));
+  background-image: linear-gradient(#d2155a00, #d2155a23, #d2155a7b);
+  background-repeat: no-repeat;
+  background-position: 0 25px;
+  z-index: 1;
+  -webkit-transition: background-position 300ms ease-in-out;
+  transition: background-position 300ms ease-in-out;
+}
+
+body #preloadPage .preloadContent #languageSelector #selectedLanguage::after {
+  content: "⯆";
+  position: absolute;
+  top: 0;
+  right: 5px;
+  translate: 0 30%;
+  rotate: 0deg;
+  -webkit-transition: rotate 300ms ease-in-out;
+  transition: rotate 300ms ease-in-out;
+}
+
+body #preloadPage .preloadContent #languageSelector #selectedLanguage:hover {
+  cursor: pointer;
+  background-position: 0 0;
+}
+
+body #preloadPage .preloadContent #languageSelector #selectedLanguage.langOpen {
+  background-position: 0 0;
+}
+
+body #preloadPage .preloadContent #languageSelector #selectedLanguage.langOpen::after {
+  rotate: 180deg;
+}
+
+body #preloadPage .preloadContent #languageSelector #selectedLanguage .flagContainer img {
+  width: 20px;
+  translate: 0 15%;
+}
+
+body #preloadPage .preloadContent #languageSelector #selectedLanguage .flagName {
+  padding-left: 10px;
+}
+
+body #preloadPage .preloadContent #languageSelector #languageOptions {
+  position: absolute;
+  top: 36px;
+  left: -1px;
+  pointer-events: none;
+}
+
+body #preloadPage .preloadContent #languageSelector #languageOptions.clickable {
+  pointer-events: all;
+}
+
+body #preloadPage .preloadContent #languageSelector #languageOptions .languageOption {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  min-width: 140px;
+  border-bottom: 1px solid black;
+  border-left: 1px solid black;
+  border-right: 1px solid black;
+  background-color: #e56276;
+  padding: 5px 0 5px 10px;
+  cursor: pointer;
+  -webkit-transition: background-color 300ms ease-in-out;
+  transition: background-color 300ms ease-in-out;
+}
+
+body #preloadPage .preloadContent #languageSelector #languageOptions .languageOption:hover {
+  background-color: #fc7e91;
+}
+
+body #preloadPage .preloadContent #languageSelector #languageOptions .languageOption .flagContainer img {
+  width: 20px;
+  translate: 0 15%;
+}
+
+body #preloadPage .preloadContent #languageSelector #languageOptions .languageOption .flagName {
+  padding-left: 10px;
+}
+
 body #preloadPage .preloadContent .preloadbuttons {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -56,6 +155,7 @@ body #preloadPage .preloadContent .preloadbuttons {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  margin: 10px 0;
 }
 
 body #preloadPage .preloadContent .actionBtn {
@@ -69,6 +169,10 @@ body #preloadPage .preloadContent .actionBtn {
           box-shadow: 5px 5px 5px rgba(87, 0, 19, 0.538);
   -webkit-transition: background-color 0.3s ease-in-out;
   transition: background-color 0.3s ease-in-out;
+}
+
+body #preloadPage .preloadContent .actionBtn#continueBtn {
+  margin-top: 15px;
 }
 
 body #preloadPage .preloadContent .actionBtn:hover {
@@ -106,6 +210,13 @@ body #preloadPage .preloadContent #delScoreBtn:hover {
 
 body #preloadPage .preloadContent #delScoreBtn.visible {
   opacity: 100%;
+}
+
+body #preloadPage .preloadContent #thankyou-message {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  translate: -50% 0;
 }
 
 body #rulesContainer {
@@ -665,6 +776,9 @@ body #musicContainer #audioCallBtn svg {
 }
 
 @media only screen and (max-width: 767px) {
+  body #preloadPage .preloadContent #languageSelector {
+    margin: 10px;
+  }
   body #rulesContainer {
     height: unset;
   }
