@@ -73,7 +73,7 @@ body #preloadPage .preloadContent #languageSelector #selectedLanguage::after {
   content: "⯆";
   content: url("../public/img/triangle.svg");
   position: absolute;
-  right: 5px;
+  right: 10px;
   rotate: 180deg;
   translate: 0 3px;
   -webkit-transition: rotate 300ms ease-in-out, translate 300ms ease-in-out;
@@ -90,7 +90,7 @@ body #preloadPage .preloadContent #languageSelector #selectedLanguage.langOpen {
 }
 
 body #preloadPage .preloadContent #languageSelector #selectedLanguage.langOpen::after {
-  rotate: 0deg;
+  rotate: 360deg;
   translate: 0 0px;
 }
 
