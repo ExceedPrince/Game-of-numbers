@@ -95,7 +95,7 @@ const CookiePage = () => {
 					<p>
 						{text[localStorage.getItem("Lang")].intro.forRules.split("/").map((item, index) => {
 							if (index === 1) {
-								return <Link to="/rules" key={`rulesPart${index}`} className='link'>{item}</Link>
+								return <Link to="/rules" key={`rulesPart${index}`} className='link' state={{ navigated: true }}>{item}</Link>
 							} else {
 								return item
 							}

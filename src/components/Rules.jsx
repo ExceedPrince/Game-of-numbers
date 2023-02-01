@@ -1,11 +1,20 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import Slider from "react-slick";
-import { Link } from "react-router-dom";
 import { MdArrowBack } from "react-icons/md";
 
 import text from "../utils/translations.json";
 
 const Rules = () => {
+
+	const location = useLocation();
+	const navigate = useNavigate();
+
+	useEffect(() => {
+		if (document.cookie.indexOf("TableGameCookie=true") === -1 || !location.state || (location.state && !location.state.navigated)) {
+			return navigate("/");
+		}
+	}, [])
 
 	const settings = {
 		dots: true,
