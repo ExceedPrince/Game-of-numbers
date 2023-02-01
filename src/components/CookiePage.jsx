@@ -16,7 +16,7 @@ const CookiePage = () => {
 	const [delClicked, setDelClicked] = useState(0);
 	const [alert, setAlert] = useState({ message: "", type: "" });
 	const [wantToPlay, setWantToPlay] = useState(true);
-	const [chosenLang, setChosenLang] = useState(localStorage.getItem("Lang") ? localStorage.getItem("Lang") : null);
+	const [chosenLang, setChosenLang] = useState(localStorage.getItem("Lang") ? localStorage.getItem("Lang") : localStorage.setItem("Lang", "English"));
 	const [showThanks, setshowThanks] = useState(false);
 
 	useEffect(() => {
